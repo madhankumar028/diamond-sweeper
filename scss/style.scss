@@ -30,3 +30,13 @@
         align-items: center;
     }
 }
+.result-container {
+    .score-title {
+        text-transform: uppercase;
+    }
+    .scores {
+        li {
+            list-style: none;
+        }
+    }
+}

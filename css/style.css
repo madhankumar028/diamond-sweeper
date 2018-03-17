@@ -26,3 +26,9 @@
     border-radius: 2px;
     justify-content: center;
     align-items: center; }
+
+.result-container .score-title {
+  text-transform: uppercase; }
+
+.result-container .scores li {
+  list-style: none; }
