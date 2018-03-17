@@ -8,13 +8,19 @@
 .text-center {
   text-align: center; }
 
+.template {
+  display: none; }
+  .template .score {
+    color: #868E96; }
+
 .game-title {
-  margin-top: 20px; }
+  margin-top: 20px;
+  font-size: 1.3rem; }
 
 .game-container {
   width: 500px;
   height: 400px;
-  margin: 30px auto;
+  margin: 20px auto;
   background-color: #fff;
   color: #fff;
   border: 6px solid #2c3e50;
@@ -27,8 +33,6 @@
     justify-content: center;
     align-items: center; }
 
-.result-container .score-title {
-  text-transform: uppercase; }
-
-.result-container .scores li {
-  list-style: none; }
+@media (max-width: 768px) {
+  .game-container {
+    width: 100%; } }

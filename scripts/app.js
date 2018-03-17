@@ -7,6 +7,7 @@
     'use strict';
     
     const gridContainer = document.getElementsByClassName('game-container')[0];
+    
     const backgroundImage = {
         'background-question-image': 'assets/images/question.png',
         'background-diamond-image': 'assets/images/diamond.png',        
@@ -18,6 +19,7 @@
 
     let flippedCount = 0;
     let randomPositions = [];
+    let maxScore = 56;
 
     /**
      * Initial setup of the app by loading the images
@@ -25,28 +27,26 @@
     function init() {
         console.info('loading the basic setup');
 
-        const totalBoxes    = 64;
         const totalDiamonds  = 8;
 
-
+        // clearing the previous place diamonds
+        randomPositions.length = 0;
+        
+        // generating random 8 numbers between 0 to 64
         for (let index = 0; index < totalDiamonds; index++ ) {
             let position = Math.floor(Math.random() * 64) + 1;
             randomPositions.push(`box-${position}`);
         }
 
-        console.log(randomPositions);
-
         for (let gridItem of gridContainer.children) {
             // adds Eventlistener for flipping the image
             gridItem.addEventListener('click', flipImage);
             
-            // console.log(gridItem.getAttribute('id'));
             let box = gridItem.getAttribute('id');
 
-            // adds multiple background image to all the boxes with both question and diamond
-            
+            // adds multiple background image to few boxes with both question and diamond
+            // and remaining with single question background        
             if (randomPositions.includes(box)) {
-                console.log('count');
                 gridItem.style.backgroundImage      = `url(${backgroundImage['background-diamond-image']}), url(${backgroundImage['background-question-image']})`;
                 gridItem.style.backgroundPosition   = `${backgroundImage['background-question-position']}, ${backgroundImage['background-diamond-position']}`;
                 gridItem.style.backgroundSize       = `${backgroundImage['background-size']}`;
@@ -69,31 +69,34 @@
      * 
      * @param {*} event 
      */
-    function flipImage(event) {
-        
-        console.info('flip starts');
-        
-        console.info('increases the flip counts');
-        flippedCount++;
-
-        console.log(flippedCount);
-
-        console.log(event.target.id);
-        console.log('clicked for flip the image');
+    function flipImage(event) {        
         
         let id = event.target.id;
         let element = document.getElementById(id);
-
+        
         if (randomPositions.includes(id)) {
-            element.style.backgroundPosition = `
-                ${backgroundImage['background-diamond-position']},
-                ${backgroundImage['background-question-position']}
-            `;
+            flippedCount++;
+            if (flippedCount !== 8) {                
+                element.style.backgroundPosition = `
+                    ${backgroundImage['background-diamond-position']},
+                    ${backgroundImage['background-question-position']}
+                `;          
+            } else {
+                element.style.backgroundPosition = `
+                    ${backgroundImage['background-diamond-position']},
+                    ${backgroundImage['background-question-position']}
+                `;
+                element.removeEventListener('click', flipImage);
+                calculateScore(maxScore);
+                init();
+                return;
+            }
+            
         } else {
+            maxScore--;
             element.style.background = 'none';
-        }   
+        }
 
-        console.info('flipped')
         element.removeEventListener('click', flipImage);
     }
 
@@ -101,17 +104,15 @@
      * Calculate Score
      * 
      * calculates the remaining unopened boxes and shows the score
-     * @param {number} remainingGrids 
+     * @param {number} total 
      */
-    function calculateScore(remainingGrids) {
-        localStorage.setItem('HighestScore', remainingGrids);
+    function calculateScore(total) {
         
-        let score = remainingGrids;
-        let highestScore = localStorage.getItem('HighestScore');
+        let template = document.getElementById('template');
+        let score = document.getElementById('current-score');
 
-        score > highestScore
-            ? (localStorage.setItem('HighestScore', score), highestScore = score)
-            : '';
+        template.style.display = 'block';
+        score.innerHTML = `Your Score is ${total}`;
     }
 
     init();

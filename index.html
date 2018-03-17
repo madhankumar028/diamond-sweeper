@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    
     <h1 class="game-title text-center">Diamond Sweeper</h1>    
+    
+    <div class="template result-container text-center" id="template">
+        <h3 id="current-score" class="score"></h3>
+    </div>
+    
     <div class="game-container">
         <div class="game-grid box-1" id="box-1"></div>
         <div class="game-grid box-2" id="box-2"></div>
@@ -74,14 +80,7 @@
         <div class="game-grid box-62" id="box-62"></div>
         <div class="game-grid box-63" id="box-63"></div>
         <div class="game-grid box-64" id="box-64"></div>
-    </div>
-    <div class="result-container text-center">
-        <h4 class="score-title">Score</h4>
-        <ul class="scores">
-            <li class="highest-score">Highest Score</li>
-            <li class="current-score">Your Score</li>
-        </ul>
-    </div>
+    </div>    
     <script src="scripts/app.js"></script>
 </body>
 </html>
