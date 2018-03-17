@@ -33,10 +33,22 @@
     }
 
     function flipImage(event) {
+        
+        console.info('flip starts');
+        
         console.log(event.target.id);
         console.log('clicked for flip the image');
+        
         let id = event.target.id;
-        let element = document.getElementById(id).removeEventListener('click', flipImage);
+        let element = document.getElementById(id);
+
+        element.style.backgroundPosition = `
+            ${backgroundImage['background-diamond-position']},
+            ${backgroundImage['background-question-position']}
+        `;
+
+        console.info('flipped')
+        element.removeEventListener('click', flipImage);
     }
 
     function calculateScore(remainingGrids) {
