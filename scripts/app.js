@@ -33,8 +33,10 @@
     }
 
     function flipImage(event) {
-        console.log(event.target.getAttribute('class'));
+        console.log(event.target.id);
         console.log('clicked for flip the image');
+        let id = event.target.id;
+        let element = document.getElementById(id).removeEventListener('click', flipImage);
     }
 
     function calculateScore(remainingGrids) {
