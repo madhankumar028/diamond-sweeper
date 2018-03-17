@@ -25,7 +25,7 @@
             gridItem.addEventListener('click', flipImage);
             
             // adds multiple background image to all the boxes with both question and diamond
-            gridItem.style.backgroundImage      = `url(${backgroundImage['background-question-image']}), url(${backgroundImage['background-diamond-image']})`;
+            gridItem.style.backgroundImage      = `url(${backgroundImage['background-diamond-image']}), url(${backgroundImage['background-question-image']})`;
             gridItem.style.backgroundPosition   = `${backgroundImage['background-question-position']}, ${backgroundImage['background-diamond-position']}`;
             gridItem.style.backgroundSize       = `${backgroundImage['background-size']}, ${backgroundImage['background-size']}`;
             gridItem.style.backgroundRepeat     = `${backgroundImage['background-repeat']}`;
