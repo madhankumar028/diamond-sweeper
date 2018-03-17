@@ -9,7 +9,7 @@
     "db": "json-server --watch db.json --port 3005",
     "build-js": "mkdir -p dist/js && uglifyjs src/js/*.js -m -o dist/js/app.js",
     "lint": "lint jshint src/**/**.js",
-    "build-css": "node-sass --include-path scss scss/main.scss assets/main.css",
+    "build-css": "node-sass --include-path scss scss/style.scss css/style.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "test": "mocha test",
     "pretest": "npm run lint",
