@@ -34,7 +34,12 @@
         
         // generating random 8 numbers between 0 to 64
         for (let index = 0; index < totalDiamonds; index++ ) {
-            let position = Math.floor(Math.random() * 64) + 1;
+            let position = Math.ceil(Math.random() * 64);
+            let tempPosition; // which is used when we get any repeated value in the randomPosition array
+            if (randomPositions.includes(position)) {
+                tempPosition = Math.ceil(Math.random() * position);
+                randomPositions.push(tempPosition);
+            }
             randomPositions.push(`box-${position}`);
         }
 
