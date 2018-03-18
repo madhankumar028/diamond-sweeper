@@ -58,6 +58,8 @@
     function init() {
         console.info('loading the basic setup');
         
+        // clearing the flipped counts
+        flippedCount = 0;
         generateRandomNumbers();
         
         for (let gridItem of gridContainer.children) {
