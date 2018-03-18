@@ -19,7 +19,7 @@
 
     let flippedCount = 0;
     let randomPositions = [];
-    let maxScore = 56;
+    let maxScore;
 
     /**
      * Generate Random numbers
@@ -58,8 +58,11 @@
     function init() {
         console.info('loading the basic setup');
         
-        // clearing the flipped counts
+        // clearing the flipped counts and maxscore
         flippedCount = 0;
+        maxScore = 56;
+
+        //shuffling the diamond places
         generateRandomNumbers();
         
         for (let gridItem of gridContainer.children) {
