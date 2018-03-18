@@ -36,17 +36,20 @@
         for (let index = 0; index < totalDiamonds; index++ ) {
             let position = Math.ceil(Math.random() * 61);
             // hack to prevent entering the repeating numbers inside the array
-            if (randomPositions.includes(position)) {
-                break;
+            if (randomPositions.includes(`box-${position}`)) {
+                console.log('prevent repeating numbers');
+                continue;
             }
             randomPositions.push(`box-${position}`);
         }
 
         if (randomPositions.length !== 8) {
-            for (let index = 1; index <= randomPositions.length; index++) {
-                randomPositions.push(61 + index);
+            let length = 8 - randomPositions.length;
+            for (let index = 1; index <= length; index++) {
+                randomPositions.push(`box-${61 + index}`);
             }
         }
+        console.log(randomPositions);
     }
 
     /**
