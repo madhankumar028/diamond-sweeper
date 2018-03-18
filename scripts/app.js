@@ -22,33 +22,47 @@
     let maxScore = 56;
 
     /**
-     * Initial setup of the app by loading the images
+     * Generate Random numbers
+     * Genrate 8 random numbers to place the diamonds inside the grid
+     * 
      */
-    function init() {
-        console.info('loading the basic setup');
-
+    function generateRandomNumbers() {
         const totalDiamonds  = 8;
-
+        
         // clearing the previous place diamonds
         randomPositions.length = 0;
         
         // generating random 8 numbers between 0 to 64
         for (let index = 0; index < totalDiamonds; index++ ) {
-            let position = Math.ceil(Math.random() * 64);
-            let tempPosition; // which is used when we get any repeated value in the randomPosition array
+            let position = Math.ceil(Math.random() * 61);
+            // hack to prevent entering the repeating numbers inside the array
             if (randomPositions.includes(position)) {
-                tempPosition = Math.ceil(Math.random() * position);
-                randomPositions.push(tempPosition);
+                break;
             }
             randomPositions.push(`box-${position}`);
         }
 
+        if (randomPositions.length !== 8) {
+            for (let index = 1; index <= randomPositions.length; index++) {
+                randomPositions.push(61 + index);
+            }
+        }
+    }
+
+    /**
+     * Initial setup of the app by loading the images
+     */
+    function init() {
+        console.info('loading the basic setup');
+        
+        generateRandomNumbers();
+        
         for (let gridItem of gridContainer.children) {
             // adds Eventlistener for flipping the image
             gridItem.addEventListener('click', flipImage);
             
             let box = gridItem.getAttribute('id');
-
+            
             // adds multiple background image to few boxes with both question and diamond
             // and remaining with single question background        
             if (randomPositions.includes(box)) {
