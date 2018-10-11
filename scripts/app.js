@@ -1,7 +1,11 @@
 /**
  * Diamond sweeper
  * 
- * Author Madhankumar J
+ * A Diamond sweeper game in HTML/JavaScript/CSS
+ *
+ * No dependencies - uses Vanilla JS
+ *
+ * @author: Madhankumar J <madhankumar028@gmail.com>
  */
 (function() {
     'use strict';
@@ -22,8 +26,9 @@
     let maxScore;
 
     /**
-     * Generate Random numbers
-     * Genrate 8 random numbers to place the diamonds inside the grid
+     * Helper function to generate Random numbers.
+     *
+     * Based on the 8 random numbers it will place the diamonds inside the board.
      * 
      */
     function generateRandomNumbers() {
@@ -53,7 +58,7 @@
     }
 
     /**
-     * Initial setup of the app by loading the images
+     * Initializes the Diamond-sweeper board and starts the game
      */
     function init() {
         console.info('loading the basic setup');
