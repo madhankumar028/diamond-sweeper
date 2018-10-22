@@ -7,7 +7,9 @@
 * Once development dependencies installed, do `npm start`
 ```
 
-#### Application will be listening in the port 3000.
+### Application will be listening in the port 3000.
 
-##### Note:
-_This application is in development mode_
+Have you find it helpful, show your interest by clicking ⭐️.
+
+#### Contribution
+If you find anything to improve, you can feel free to contribute. Give me pull request, I am ready to accept it.
